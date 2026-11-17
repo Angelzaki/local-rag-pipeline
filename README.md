@@ -6,7 +6,20 @@
 
 `ingest → index → retrieve → answer + citas + guard`
 
+<br/>
+<img src="docs/diagram.jpg" alt="Problema → Solución → Resultado" width="100%"/>
+
 </div>
+
+---
+
+### `$ cat diagrama.md`
+
+```mermaid
+flowchart LR
+  P[Problema<br/>Respuestas sin evidencia] --> S[Solución<br/>ingest → retrieve → answer + guard]
+  S --> R[Resultado<br/>Grounded o abstención]
+```
 
 ---
 
