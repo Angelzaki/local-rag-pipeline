@@ -1,0 +1,25 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DOCS_DIR: /app/samples/docs
+      INDEX_DIR: /app/data/index
+      OLLAMA_BASE_URL: http://ollama:11434
+      USE_OLLAMA: "false"
+    volumes:
+      - ./samples:/app/samples
+      - ./data:/app/data
+    depends_on:
+      - ollama
+
+volumes:
+  ollama_data:
